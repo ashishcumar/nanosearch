@@ -1,0 +1,71 @@
+.comparison-cards {
+  margin-bottom: 20px;
+}
+
+.comparison-cards-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-section);
+  margin-bottom: 12px;
+}
+
+.comparison-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.comparison-card {
+  padding: 14px 16px;
+  background: linear-gradient(180deg, rgba(38, 38, 42, 0.95) 0%, rgba(30, 30, 34, 0.95) 100%);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.comparison-card-naive {
+  border-left: 3px solid #f59e0b;
+}
+
+.comparison-card-sab {
+  border-left: 3px solid #22c55e;
+}
+
+.comparison-card-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.comparison-card-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comparison-card-metrics div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+}
+
+.comparison-card-metrics dt {
+  color: var(--text-subtle);
+  font-weight: 400;
+}
+
+.comparison-card-metrics dd {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.comparison-card-metrics .comparison-warn {
+  color: #f59e0b;
+}
+
+.comparison-card-metrics .comparison-ok {
+  color: #22c55e;
+}

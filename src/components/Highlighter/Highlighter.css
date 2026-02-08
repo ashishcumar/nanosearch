@@ -1,0 +1,7 @@
+.highlighter-mark {
+  background: rgba(212, 175, 55, 0.55);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 2px;
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.2);
+}

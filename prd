@@ -1,0 +1,50 @@
+PRD: NanoSearch Performance Lab
+
+1. Project Overview
+NanoSearch is a high-performance benchmarking dashboard designed to showcase the power of advanced data structures and multi-threaded architecture in the browser. It pits a "Naive" linear search against a "Senior" Binary Trie implementation to demonstrate how to handle massive datasets (500,000+ words) with sub-millisecond latency.
+
+2. Technical ArchitectureThe application utilizes a Tri-Threaded Model to maintain 60 FPS UI responsiveness while performing heavy computation:
+- Main Thread (UI): Manages user input, high-resolution timers, and virtualized rendering.
+- Worker A (Naive Engine): Performs $O(n)$ linear filtering on a standard JavaScript Array.
+- Worker B (Nano Engine): Performs $O(L)$ prefix traversal on a Binary Trie backed by SharedArrayBuffer.
+
+
+3. Core Features
+3.1. Unified Search Interface
+- Single Input: A central search bar that broadcasts queries to both Worker threads simultaneously.
+- Real-time Comparison: Side-by-side result panes showing the "race" between algorithms.
+- The "Jank" Indicator: A visual heartbeat animation that freezes if the Main Thread is blocked, proving the necessity of Web Workers.
+
+3.2. Performance Dashboard
+Each engine pane displays real-time telemetry:
+- Search Latency: Measured in microseconds using performance.now().
+- Throughput: Number of nodes or strings scanned per millisecond.
+- Memory Footprint: Comparison of JSON/Object overhead vs. TypedArray binary density.
+- Algorithm Details: Live display of the Big O complexity currently in execution.
+
+3.3. Technical Showcases
+- Main Thread Sabotage: A toggle to move the Naive search to the UI thread, demonstrating how unoptimized code "breaks" the browser.
+- Binary Data Source: A link to open the raw words.txt file (500k words) to verify data integrity.
+
+4. Engineering Requirements
+4.1. Data Engineering
+- Binary Trie: Pre-compiled trie.bin containing a flattened Int32Array for zero-parsing startup.
+- Shared Memory: Utilization of SharedArrayBuffer to allow Worker B to query memory without data cloning (Zero-Copy).
+
+4.2. UI Engineering
+- Virtual Scrolling: A custom implementation to handle result sets that may exceed 20,000 matches without bloat.
+- Atomic Highlights: High-performance text masking to highlight matching prefixes/fuzzy indices.
+
+5. Success Metrics (Target KPIs)
+Metric,Naive Target,NanoSearch Target
+Search Time,>30ms,<1ms
+UI Frame Rate,Variable (Janky),Consistent 60 FPS
+Data Parsing,O(n) JSON Parse,O(1) Buffer Mapping
+Complexity,O(n),O(L) where L=word length
+
+6. Implementation Checklist
+[ ] Data Pre-processing: Node.js script to generate trie.bin from raw word list.
+[ ] Worker Orchestration: Set up communication bus between Main Thread and Workers.
+[ ] Search Algorithms: Implement linear filter (Worker A) and Trie traversal (Worker B).
+[ ] UI Development: Build the side-by-side dashboard and Virtual Scroller.
+[ ] Security Headers: Configure COOP/COEP headers to enable SharedArrayBuffer in production.
