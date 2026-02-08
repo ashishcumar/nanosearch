@@ -2,6 +2,8 @@
 
 Search Benchmark: Main Thread vs Worker (50 Lakh words)
 
+**[Live Demo](https://nanosearches.web.app/)** · [Source Code](https://github.com/ashishcumar/nanosearch)
+
 ![NanoSearch](website.png)
 
 NanoSearch compares search performance between **Naive (main-thread)** and **Optimized (Web Worker SAB)** implementations over 5 million words. It demonstrates how offloading search to a SharedArrayBuffer-backed Web Worker avoids UI blocking and achieves dramatically lower latency.
