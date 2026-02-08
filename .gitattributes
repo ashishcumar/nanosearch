@@ -1,0 +1,4 @@
+public/words-5m.json filter=lfs diff=lfs merge=lfs -text
+public/words-5m.txt filter=lfs diff=lfs merge=lfs -text
+public/sab-data.bin filter=lfs diff=lfs merge=lfs -text
+public/trie.bin filter=lfs diff=lfs merge=lfs -text
